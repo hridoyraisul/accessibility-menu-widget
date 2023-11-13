@@ -104,11 +104,17 @@
     position: fixed;
     top: 50%;
     right: 0px;
-    transform: translateY(-30%);
+    transform: translateY(-50%);
     background-image: linear-gradient(to right, #365969, #638791);
     padding: 10px;
     border: 5px solid lightcyan;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 999;
+}
+
+.accessibility-menu-btn:hover {
+    border: 5px solid ghostwhite;
+    background-image: linear-gradient(to right, #588da6, #aed1da);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
