@@ -51,7 +51,7 @@ Include the following HTML code in your web page to create the accessibility men
 </button>
 ```
 For the menu to work properly, the button must have the class `accessibility-menu-btn` and the id `settings-toggle`.
-Now, include `.content` class to the content of your web page.v Like below:
+Now, include `.content` class to the content of your web page like below:
 
 ```html
 <div class="content">
