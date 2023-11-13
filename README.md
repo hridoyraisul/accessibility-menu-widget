@@ -33,12 +33,12 @@ You can install the widget by including the provided JavaScript and CSS files in
 
 #### CSS Initialization
 ```css
-<link rel="stylesheet" href="css/accessibility-menu.css">
+<link rel="stylesheet" href="assets/css/style.css">
 ```
 
 #### JavaScript Initialization
 ```javascript
-<script src="js/accessibility-menu.js"></script>
+<script src="assets/js/script.js"></script>
 ```
 
 #### HTML Initialization

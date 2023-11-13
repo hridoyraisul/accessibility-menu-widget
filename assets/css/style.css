@@ -24,7 +24,7 @@
 }
 
 .big-cursor {
-    cursor: url('big-cursor.svg'), auto !important;
+    cursor: url('assets/img/big-cursor.svg'), auto !important;
 }
 
 .iconBtn{
