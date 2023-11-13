@@ -46,7 +46,7 @@ You can install the widget by including the provided JavaScript and CSS files in
 Include the following HTML code in your web page to create the accessibility menu button.
 
 ```html
-<button class="btn btn-outline-dark m-4 accessibility-menu-btn" id="settings-toggle">
+<button class="accessibility-menu-btn" id="settings-toggle">
      🤖 <b>Accessibility Menu</b>
 </button>
 ```
