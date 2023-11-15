@@ -1,5 +1,4 @@
 inject_html_to_dom();
-
 const settingsToggle = document.getElementById('settings-toggle');
 const accessibilityMenu = document.querySelector('.accessibility-menu');
 settingsToggle.addEventListener('click', () => {
