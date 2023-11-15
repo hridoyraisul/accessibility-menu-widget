@@ -1,4 +1,3 @@
-inject_html_to_dom();
 const settingsToggle = document.getElementById('settings-toggle');
 const accessibilityMenu = document.querySelector('.accessibility-menu');
 settingsToggle.addEventListener('click', () => {
@@ -293,98 +292,98 @@ document.body.addEventListener('mouseover', (event) => {
         }
     }
 });
-
-function inject_html_to_dom() {
-    let html = '<div class="accessibility-menu">\n' +
-        '\n' +
-        '    <button class="btn btn-sm crossBtn" onclick="handleAccessibilityOption(\'close\')">❌</button>\n' +
-        '\n' +
-        '    <div id="settings-list">\n' +
-        '        <ul style="list-style: none;">\n' +
-        '            <li>\n' +
-        '                <div class="btn-group btn-block">\n' +
-        '                    <button class="btn text-center btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'font-increase\')">\n' +
-        '                        <b>⬆️ A<sup>+</sup></b>\n' +
-        '                    </button>\n' +
-        '                    <button class="btn text-center btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'font-decrease\')">\n' +
-        '                        <b>⬇️ A<sup>-</sup></b>\n' +
-        '                    </button>\n' +
-        '                </div>\n' +
-        '            </li>\n' +
-        '            <li>\n' +
-        '                <div class="btn-group btn-block">\n' +
-        '                    <button class="btn btn-sm btn-info iconBtn">🔦</button>\n' +
-        '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'highlight-links\')" id="highlight-links">\n' +
-        '                        Highlight Links\n' +
-        '                    </button>\n' +
-        '                </div>\n' +
-        '            </li>\n' +
-        '            <li>\n' +
-        '                <div class="btn-group btn-block">\n' +
-        '                    <button class="btn btn-sm btn-info iconBtn">💡</button>\n' +
-        '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'highlight-heading\')" id="highlight-heading">\n' +
-        '                        Highlight Heading\n' +
-        '                    </button>\n' +
-        '                </div>\n' +
-        '            </li>\n' +
-        '\n' +
-        '            <li>\n' +
-        '                <div class="btn-group btn-block">\n' +
-        '                    <button class="btn btn-sm btn-info iconBtn">📖</button>\n' +
-        '                    <button class="btn btn-sm accessibility-enable-button btn-block" onclick="handleAccessibilityOption(\'reading-guide\')" id="reading-guide">\n' +
-        '                        Reading Guide\n' +
-        '                    </button>\n' +
-        '                </div>\n' +
-        '            </li>\n' +
-        '\n' +
-        '            <li>\n' +
-        '                <div class="btn-group btn-block">\n' +
-        '                    <button class="btn btn-sm btn-info iconBtn">👉</button>\n' +
-        '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'big-cursor\')" id="big-cursor">\n' +
-        '                        Big Cursor\n' +
-        '                    </button>\n' +
-        '                </div>\n' +
-        '            </li>\n' +
-        '\n' +
-        '            <li>\n' +
-        '                <div class="btn-group btn-block">\n' +
-        '                    <button class="btn btn-sm btn-info iconBtn"> 💫</button>\n' +
-        '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'invert-color\')" id="invert-color">\n' +
-        '                        Invert Color\n' +
-        '                    </button>\n' +
-        '                </div>\n' +
-        '            </li>\n' +
-        '            <li>\n' +
-        '                <div class="btn-group btn-block">\n' +
-        '                    <button class="btn btn-sm btn-info iconBtn">✒️</button>\n' +
-        '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'black-white\')" id="black-white">\n' +
-        '                        Black & White\n' +
-        '                    </button>\n' +
-        '                </div>\n' +
-        '            </li>\n' +
-        '\n' +
-        '            <li>\n' +
-        '                <div class="btn-group btn-block">\n' +
-        '                    <button class="btn btn-sm btn-info iconBtn">🔊</button>\n' +
-        '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'screen-reader\')" id="screen-reader">\n' +
-        '                        Read Screen\n' +
-        '                    </button>\n' +
-        '                </div>\n' +
-        '            </li>\n' +
-        '            <li>\n' +
-        '                <div class="btn-group btn-block">\n' +
-        '                    <button class="btn btn-sm btn-info iconBtn"> 🚫</button>\n' +
-        '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'reset\')" id="reset">\n' +
-        '                        Reset\n' +
-        '                    </button>\n' +
-        '                </div>\n' +
-        '            </li>\n' +
-        '        </ul>\n' +
-        '    </div>\n' +
-        '</div>';
-    let dom = document.getElementById('heart-widget');
-    dom.innerHTML = html;
-    if (dom.hasAttribute('data-widgetButton') && dom.getAttribute('data-widgetButton') === 'true') {
-        dom.innerHTML += '<button class="btn btn-outline-dark m-4 accessibility-menu-btn" id="settings-toggle">🤖</button>';
-    }
-}
+//
+// function inject_html_to_dom() {
+//     let html = '<div class="accessibility-menu">\n' +
+//         '\n' +
+//         '    <button class="btn btn-sm crossBtn" onclick="handleAccessibilityOption(\'close\')">❌</button>\n' +
+//         '\n' +
+//         '    <div id="settings-list">\n' +
+//         '        <ul style="list-style: none;">\n' +
+//         '            <li>\n' +
+//         '                <div class="btn-group btn-block">\n' +
+//         '                    <button class="btn text-center btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'font-increase\')">\n' +
+//         '                        <b>⬆️ A<sup>+</sup></b>\n' +
+//         '                    </button>\n' +
+//         '                    <button class="btn text-center btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'font-decrease\')">\n' +
+//         '                        <b>⬇️ A<sup>-</sup></b>\n' +
+//         '                    </button>\n' +
+//         '                </div>\n' +
+//         '            </li>\n' +
+//         '            <li>\n' +
+//         '                <div class="btn-group btn-block">\n' +
+//         '                    <button class="btn btn-sm btn-info iconBtn">🔦</button>\n' +
+//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'highlight-links\')" id="highlight-links">\n' +
+//         '                        Highlight Links\n' +
+//         '                    </button>\n' +
+//         '                </div>\n' +
+//         '            </li>\n' +
+//         '            <li>\n' +
+//         '                <div class="btn-group btn-block">\n' +
+//         '                    <button class="btn btn-sm btn-info iconBtn">💡</button>\n' +
+//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'highlight-heading\')" id="highlight-heading">\n' +
+//         '                        Highlight Heading\n' +
+//         '                    </button>\n' +
+//         '                </div>\n' +
+//         '            </li>\n' +
+//         '\n' +
+//         '            <li>\n' +
+//         '                <div class="btn-group btn-block">\n' +
+//         '                    <button class="btn btn-sm btn-info iconBtn">📖</button>\n' +
+//         '                    <button class="btn btn-sm accessibility-enable-button btn-block" onclick="handleAccessibilityOption(\'reading-guide\')" id="reading-guide">\n' +
+//         '                        Reading Guide\n' +
+//         '                    </button>\n' +
+//         '                </div>\n' +
+//         '            </li>\n' +
+//         '\n' +
+//         '            <li>\n' +
+//         '                <div class="btn-group btn-block">\n' +
+//         '                    <button class="btn btn-sm btn-info iconBtn">👉</button>\n' +
+//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'big-cursor\')" id="big-cursor">\n' +
+//         '                        Big Cursor\n' +
+//         '                    </button>\n' +
+//         '                </div>\n' +
+//         '            </li>\n' +
+//         '\n' +
+//         '            <li>\n' +
+//         '                <div class="btn-group btn-block">\n' +
+//         '                    <button class="btn btn-sm btn-info iconBtn"> 💫</button>\n' +
+//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'invert-color\')" id="invert-color">\n' +
+//         '                        Invert Color\n' +
+//         '                    </button>\n' +
+//         '                </div>\n' +
+//         '            </li>\n' +
+//         '            <li>\n' +
+//         '                <div class="btn-group btn-block">\n' +
+//         '                    <button class="btn btn-sm btn-info iconBtn">✒️</button>\n' +
+//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'black-white\')" id="black-white">\n' +
+//         '                        Black & White\n' +
+//         '                    </button>\n' +
+//         '                </div>\n' +
+//         '            </li>\n' +
+//         '\n' +
+//         '            <li>\n' +
+//         '                <div class="btn-group btn-block">\n' +
+//         '                    <button class="btn btn-sm btn-info iconBtn">🔊</button>\n' +
+//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'screen-reader\')" id="screen-reader">\n' +
+//         '                        Read Screen\n' +
+//         '                    </button>\n' +
+//         '                </div>\n' +
+//         '            </li>\n' +
+//         '            <li>\n' +
+//         '                <div class="btn-group btn-block">\n' +
+//         '                    <button class="btn btn-sm btn-info iconBtn"> 🚫</button>\n' +
+//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'reset\')" id="reset">\n' +
+//         '                        Reset\n' +
+//         '                    </button>\n' +
+//         '                </div>\n' +
+//         '            </li>\n' +
+//         '        </ul>\n' +
+//         '    </div>\n' +
+//         '</div>';
+//     let dom = document.getElementById('heart-widget');
+//     dom.innerHTML = html;
+//     if (dom.hasAttribute('data-widgetButton') && dom.getAttribute('data-widgetButton') === 'true') {
+//         dom.innerHTML += '<button class="btn btn-outline-dark m-4 accessibility-menu-btn" id="settings-toggle">🤖</button>';
+//     }
+//}

@@ -32,7 +32,7 @@ You can install the widget by including the provided JavaScript and CSS files in
 ## How to Use
 
 #### CSS Initialization
-```css
+```html
 <link rel="stylesheet" href="assets/css/style.css">
 ```
 
@@ -47,7 +47,7 @@ Include the following HTML code in your web page to create the accessibility men
 
 ```html
 <button class="accessibility-menu-btn" id="settings-toggle">
-     🤖 <b>Accessibility Menu</b>
+     🤖
 </button>
 ```
 For the menu to work properly, the button must have the class `accessibility-menu-btn` and the id `settings-toggle`.
@@ -66,7 +66,8 @@ Now, include `.content` class to the content of your web page like below:
 ```
 This is how your widget should look like:
 
-![Accessibility Menu Widget](screenshot/img.png)
+![Accessibility Menu Button](screenshot/img.png)
+![Accessibility Menu Widget](screenshot/img_1.png)
 
 ----------------------------------------------------
 
