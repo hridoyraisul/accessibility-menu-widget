@@ -1,3 +1,5 @@
+inject_html_to_dom();
+
 const settingsToggle = document.getElementById('settings-toggle');
 const accessibilityMenu = document.querySelector('.accessibility-menu');
 settingsToggle.addEventListener('click', () => {
@@ -10,7 +12,6 @@ const content = document.querySelector('.content');
 let inverted, linksHighlighted, highlightedHeading, blackWhite, readingGuide, isReading, bigCursor;
 
 $(document).ready(()=>{
-    inject_html_to_dom();
     if (sessionStorage.getItem('inverted') === 'true') {
         inverted = true;
         invertColor();
