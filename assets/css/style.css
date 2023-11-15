@@ -48,7 +48,6 @@
 .accessibility-enable-button:hover {
     background-image: linear-gradient(to right, #365969, #638791);
     color: #ffffff;
-    /*border: solid 3px ghostwhite;*/
     border-radius: 5px;
     padding: 5px 10px;
 }
