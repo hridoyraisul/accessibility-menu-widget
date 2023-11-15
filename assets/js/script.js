@@ -383,8 +383,8 @@ function inject_html_to_dom() {
         '    </div>\n' +
         '</div>';
     let dom = document.getElementById('heart-widget');
-    if (dom.hasAttribute('data-widgetButton') && dom.getAttribute('data-widgetButton') === 'true') {
-        html += '<button class="btn btn-outline-dark m-4 accessibility-menu-btn" id="settings-toggle">🤖</button>';
-    }
     dom.innerHTML = html;
+    if (dom.hasAttribute('data-widgetButton') && dom.getAttribute('data-widgetButton') === 'true') {
+        dom.innerHTML += '<button class="btn btn-outline-dark m-4 accessibility-menu-btn" id="settings-toggle">🤖</button>';
+    }
 }
