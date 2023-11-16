@@ -35,41 +35,23 @@
     border-bottom:solid 3px lightcyan;
 }
 
-.accessibility-enable-button {
-    /*background-image: linear-gradient(to right, #203a43, #2c5364);*/
-    /*color: lightcyan;*/
-    /*border: solid 3px lightcyan;*/
-    /*border-radius: 5px;*/
-    /*padding: 5px 10px;*/
-    /*margin-right: 5px;*/
-    /*margin-left: 5px;*/
-}
-
-.accessibility-enable-button:hover {
-    /*background-image: linear-gradient(to right, #365969, #638791);*/
-    /*color: #ffffff;*/
-    /*border-radius: 5px;*/
-    /*padding: 5px 10px;*/
-}
-
-
+/*Widget Menu Box Start*/
 .accessibility-menu {
     position: fixed;
     top: 50%;
     right: -350px;
     transform: translateY(-50%);
-    background-image: linear-gradient(to right, #365969, #638791);
     padding: 10px;
-    border: 5px solid lightcyan;
+    border: 5px solid dimgray;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 999;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease-in-out;
 }
-
 .accessibility-menu:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
-
 .accessibility-menu ul {
     padding: 0;
 }
@@ -80,7 +62,10 @@
     width: 100%;
     text-align: left;
 }
+/*Widget Menu Box End*/
 
+
+/*Widget Menu Close Button Start*/
 .crossBtn {
     position: absolute;
     top: 0;
@@ -89,31 +74,71 @@
     border-radius: 50%;
     padding: 5px 5px;
     font-size: 10px;
-    border: solid 3px lightpink;
+    border: solid 3px dimgray;
     outline: none;
     background-color: #ffffff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .crossBtn:hover {
-    background-color: lightpink;
+    background-color: #a8c4c4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+/*Widget Menu Close Button End*/
 
-
+/*Rounded Floating Button Start*/
 .accessibility-menu-btn {
     position: fixed;
     top: 50%;
-    right: 0px;
+    right: 1px;
     transform: translateY(-50%);
-    background-image: linear-gradient(to right, #365969, #638791);
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease-in-out;
     padding: 10px;
-    border: 5px solid lightcyan;
+    border: 5px solid dimgray;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 999;
 }
-
 .accessibility-menu-btn:hover {
-    border: 5px solid ghostwhite;
-    background-image: linear-gradient(to right, #588da6, #aed1da);
+    border: 5px solid dimgray;
+    background-color: rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
+/*Rounded Floating Button End*/
+
+
+
+/* Custom styles for the widget start */
+ .widget-toolbar {
+     display: flex;
+     justify-content: space-between;
+     margin-bottom: 1rem;
+ }
+
+.widget-group {
+    display: flex;
+}
+
+.widget-btn {
+    display: inline-block;
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 0.375rem 0.75rem;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.widget-btn:hover {
+    background-image: linear-gradient(to right, #365969, #4c6972);
+}
+
+.widget-btn b {
+    margin-right: 5px;
+}
+
+.widget-gap-2 {
+    display: grid;
+    gap: 0.5rem;
+}
+/* Custom styles for the widget end */

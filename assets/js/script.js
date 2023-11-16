@@ -57,12 +57,10 @@ $(document).ready(()=>{
 function handleAccessibilityOption(option) {
     switch (option) {
         case 'font-increase':
-            let currentFontSize = content.style.fontSize;
-            content.style.fontSize = currentFontSize ? parseFloat(currentFontSize) + 0.1 + 'em' : '1.1em';
+            fontSizeManipulate('increase');
             break;
         case 'font-decrease':
-            let currentFontSize2 = content.style.fontSize;
-            content.style.fontSize = currentFontSize2 ? parseFloat(currentFontSize2) - 0.1 + 'em' : '0.9em';
+            fontSizeManipulate('decrease');
             break;
         case 'big-cursor':
             bigCursorSettings();
@@ -102,7 +100,7 @@ function bigCursorSettings(){
     if (!bigCursor){
         document.body.classList.toggle('big-cursor');
         bigCursor = true;
-        cursorButton.style.color = 'orange';
+        cursorButton.style.color = 'yellow';
     } else {
         document.body.classList.toggle('big-cursor');
         bigCursor = false;
@@ -116,10 +114,10 @@ function screenReaderSettings(){
     if (!isReading) {
         isReading = true;
         readButton.textContent = '🔊  Stop Reading';
-        readButton.style.color = 'orange';
+        readButton.style.color = 'yellow';
     } else {
         isReading = false;
-        readButton.textContent = '🔊  Read Screen';
+        readButton.textContent = '🔊   Read Screen';
         readButton.style.color = 'lightcyan';
         speechSynthesis.cancel();
     }
@@ -130,7 +128,7 @@ function readingGuideSettings(){
     const readGuideButton = document.getElementById('reading-guide');
     if (!readingGuide){
         readingGuide = true;
-        readGuideButton.style.color = 'orange';
+        readGuideButton.style.color = 'yellow';
     } else {
         readingGuide = false;
         readGuideButton.style.color = 'lightcyan';
@@ -144,7 +142,7 @@ function invertColor(){
     if (!inverted){
         content.classList.toggle('inverted');
         inverted = true;
-        invertButton.style.color = 'orange';
+        invertButton.style.color = 'yellow';
     } else {
         content.classList.toggle('inverted');
         inverted = false;
@@ -158,7 +156,7 @@ function highlightLink(){
     if (!linksHighlighted){
         content.classList.toggle('highlight-links');
         linksHighlighted = true;
-        highlightLinkButton.style.color = 'orange';
+        highlightLinkButton.style.color = 'yellow';
     } else {
         content.classList.toggle('highlight-links');
         linksHighlighted = false;
@@ -172,7 +170,7 @@ function blackAndWhite(){
     if (!blackWhite){
         content.classList.toggle('black-white');
         blackWhite = true;
-        blackAndWhiteButton.style.color = 'orange';
+        blackAndWhiteButton.style.color = 'yellow';
     } else {
         content.classList.toggle('black-white');
         blackWhite = false;
@@ -189,7 +187,7 @@ function highlightHeading(){
             heading.classList.toggle('highlight-heading');
         });
         highlightedHeading = true;
-        highlightHeadingButton.style.color = 'orange';
+        highlightHeadingButton.style.color = 'yellow';
     } else {
         let headings = content.querySelectorAll('h1, h2, h3, h4, h5, h6');
         headings.forEach(heading => {
@@ -199,6 +197,27 @@ function highlightHeading(){
         highlightHeadingButton.style.color = 'lightcyan';
     }
     sessionStorage.setItem('highlightedHeading', highlightedHeading)
+}
+
+function fontSizeManipulate(option){
+    let currentFontSize = content.style.fontSize;
+    switch (option) {
+        case 'increase':
+            if (currentFontSize < '1.4em' || currentFontSize === ''){
+                content.style.fontSize = currentFontSize ? parseFloat(currentFontSize) + 0.1 + 'em' : '1.1em';
+            }
+            break;
+        case 'decrease':
+            if (currentFontSize > '0.7em' || currentFontSize === ''){
+                content.style.fontSize = currentFontSize ? parseFloat(currentFontSize) - 0.1 + 'em' : '0.9em';
+                console.log(content.style.fontSize)
+            }
+            break;
+        default:
+            content.style.fontSize = '1em';
+            break;
+    }
+
 }
 
 function resetAccessibilitySettings(){
@@ -225,6 +244,10 @@ function resetAccessibilitySettings(){
     sessionStorage.setItem('bigCursor', bigCursor);
     content.style.fontSize = '1em';
     speechSynthesis.cancel();
+    let widgetButtons = document.querySelectorAll('.widget-btn');
+    widgetButtons.forEach(button => {
+        button.style.color = '#fff';
+    });
 }
 
 function closeAccessibilityMenu() {
@@ -292,7 +315,7 @@ document.body.addEventListener('mouseover', (event) => {
         }
     }
 });
-//
+
 // function inject_html_to_dom() {
 //     let html = '<div class="accessibility-menu">\n' +
 //         '\n' +
