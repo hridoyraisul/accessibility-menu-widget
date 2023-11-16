@@ -398,15 +398,70 @@ const defaultWidget = '<div class="accessibility-menu">\n' +
     '    </div>\n' +
     '</div>';
 
+function widgetItem(item) {
+    switch (item) {
+        case 'font-increase-decrease':
+            return '<li>\n' +
+                '                <div class="widget-toolbar" role="toolbar" aria-label="">\n' +
+                '                    <div class="widget-group me-2" role="group" aria-label="">\n' +
+                '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-increase\')">\n' +
+                '                            <b>A<sup>+</sup></b>\n' +
+                '                        </button>\n' +
+                '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-decrease\')">\n' +
+                '                            <b>A<sup>-</sup></b>\n' +
+                '                        </button>\n' +
+                '                    </div>\n' +
+                '                </div>\n' +
+                '            </li>\n';
+        case 'big-cursor':
+            return;
+        case 'screen-reader':
+            return;
+        case 'invert-color':
+            return;
+        case 'highlight-links':
+            return '<li>\n' +
+                '                <div class="widget-gap-2">\n' +
+                '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'highlight-links\')" id="highlight-links">\n' +
+                '                        <b>🔦</b>  Highlight Links\n' +
+                '                    </button>\n' +
+                '                </div>\n' +
+                '            </li>\n';
+        case 'highlight-heading':
+            return '<li>\n' +
+                '                <div class="widget-gap-2">\n' +
+                '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'highlight-heading\')" id="highlight-heading">\n' +
+                '                        <b>💡</b>  Highlight Heading\n' +
+                '                    </button>\n' +
+                '                </div>\n' +
+                '            </li>\n';
+        case 'reading-guide':
+            return ;
+        case 'black-white':
+            return;
+        case 'reset':
+            return;
+        case 'close':
+            return;
+    }
+}
+
+function fetchWidget(settings) {
+    settings.features.forEach(feature => {
+
+    })
+    return defaultWidget;
+}
+
 (function ($) {
     $.fn.widgetBox = function (options) {
         const defaults = {
-            features: ['font-increase', 'font-decrease', 'big-cursor', 'screen-reader', 'invert-color', 'highlight-links', 'highlight-heading', 'reading-guide', 'black-white', 'reset', 'close' ],
+            features: ['font-increase-decrease', 'big-cursor', 'screen-reader', 'invert-color', 'highlight-links', 'highlight-heading', 'reading-guide', 'black-white', 'reset', 'close' ],
             position: 'right',
             closeButton: 'left'
         };
         const settings = { ...defaults, ...options };
-        $(this).append(defaultWidget);
+        $(this).append(fetchWidget(settings));
     };
 })(jQuery);
 
