@@ -56,7 +56,7 @@
 .accessibility-menu {
     position: fixed;
     top: 50%;
-    right: -250px;
+    right: -350px;
     transform: translateY(-50%);
     background-image: linear-gradient(to right, #365969, #638791);
     padding: 10px;

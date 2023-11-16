@@ -115,11 +115,11 @@ function screenReaderSettings(){
     const readButton = document.getElementById('screen-reader');
     if (!isReading) {
         isReading = true;
-        readButton.textContent = 'Stop Reading';
+        readButton.textContent = '🔊  Stop Reading';
         readButton.style.color = 'orange';
     } else {
         isReading = false;
-        readButton.textContent = 'Read Screen';
+        readButton.textContent = '🔊  Read Screen';
         readButton.style.color = 'lightcyan';
         speechSynthesis.cancel();
     }
@@ -229,7 +229,7 @@ function resetAccessibilitySettings(){
 
 function closeAccessibilityMenu() {
     const accessibilityMenu = document.querySelector('.accessibility-menu');
-    accessibilityMenu.style.right = '-250px';
+    accessibilityMenu.style.right = '-350px';
     accessibilityMenu.style.transition = 'right 0.5s';
     setTimeout(() => {
         accessibilityMenu.style.visibility = 'hidden';
@@ -242,7 +242,7 @@ if ('speechSynthesis' in window) {
     window.speechSynthesis.onvoiceschanged = function() {
         voices = window.speechSynthesis.getVoices();
         voices.forEach(voice => {
-            console.log(voice.name, voice.lang);
+            // console.log(voice.name, voice.lang);
         });
     };
 } else {
@@ -251,7 +251,7 @@ if ('speechSynthesis' in window) {
 
 function readText(text){
     let selectedVoice = voices[1]
-    console.log('Selected Voice: ', selectedVoice.name + ' ' + selectedVoice.lang);
+    // console.log('Selected Voice: ', selectedVoice.name + ' ' + selectedVoice.lang);
     if ('speechSynthesis' in window) {
         const synthesis = window.speechSynthesis;
         const utterance = new SpeechSynthesisUtterance();
