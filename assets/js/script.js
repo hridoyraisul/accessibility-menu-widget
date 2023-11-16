@@ -102,7 +102,7 @@ function bigCursorSettings(){
     if (!bigCursor){
         document.body.classList.toggle('big-cursor');
         bigCursor = true;
-        cursorButton.style.color = 'yellow';
+        cursorButton.style.color = 'orange';
     } else {
         document.body.classList.toggle('big-cursor');
         bigCursor = false;
@@ -116,7 +116,7 @@ function screenReaderSettings(){
     if (!isReading) {
         isReading = true;
         readButton.textContent = 'Stop Reading';
-        readButton.style.color = 'yellow';
+        readButton.style.color = 'orange';
     } else {
         isReading = false;
         readButton.textContent = 'Read Screen';
@@ -130,7 +130,7 @@ function readingGuideSettings(){
     const readGuideButton = document.getElementById('reading-guide');
     if (!readingGuide){
         readingGuide = true;
-        readGuideButton.style.color = 'yellow';
+        readGuideButton.style.color = 'orange';
     } else {
         readingGuide = false;
         readGuideButton.style.color = 'lightcyan';
@@ -144,7 +144,7 @@ function invertColor(){
     if (!inverted){
         content.classList.toggle('inverted');
         inverted = true;
-        invertButton.style.color = 'yellow';
+        invertButton.style.color = 'orange';
     } else {
         content.classList.toggle('inverted');
         inverted = false;
@@ -158,7 +158,7 @@ function highlightLink(){
     if (!linksHighlighted){
         content.classList.toggle('highlight-links');
         linksHighlighted = true;
-        highlightLinkButton.style.color = 'yellow';
+        highlightLinkButton.style.color = 'orange';
     } else {
         content.classList.toggle('highlight-links');
         linksHighlighted = false;
@@ -172,7 +172,7 @@ function blackAndWhite(){
     if (!blackWhite){
         content.classList.toggle('black-white');
         blackWhite = true;
-        blackAndWhiteButton.style.color = 'yellow';
+        blackAndWhiteButton.style.color = 'orange';
     } else {
         content.classList.toggle('black-white');
         blackWhite = false;
@@ -189,7 +189,7 @@ function highlightHeading(){
             heading.classList.toggle('highlight-heading');
         });
         highlightedHeading = true;
-        highlightHeadingButton.style.color = 'yellow';
+        highlightHeadingButton.style.color = 'orange';
     } else {
         let headings = content.querySelectorAll('h1, h2, h3, h4, h5, h6');
         headings.forEach(heading => {

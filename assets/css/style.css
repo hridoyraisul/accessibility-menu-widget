@@ -36,20 +36,20 @@
 }
 
 .accessibility-enable-button {
-    background-image: linear-gradient(to right, #203a43, #2c5364);
-    color: lightcyan;
-    border: solid 3px lightcyan;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-right: 5px;
-    margin-left: 5px;
+    /*background-image: linear-gradient(to right, #203a43, #2c5364);*/
+    /*color: lightcyan;*/
+    /*border: solid 3px lightcyan;*/
+    /*border-radius: 5px;*/
+    /*padding: 5px 10px;*/
+    /*margin-right: 5px;*/
+    /*margin-left: 5px;*/
 }
 
 .accessibility-enable-button:hover {
-    background-image: linear-gradient(to right, #365969, #638791);
-    color: #ffffff;
-    border-radius: 5px;
-    padding: 5px 10px;
+    /*background-image: linear-gradient(to right, #365969, #638791);*/
+    /*color: #ffffff;*/
+    /*border-radius: 5px;*/
+    /*padding: 5px 10px;*/
 }
 
 
