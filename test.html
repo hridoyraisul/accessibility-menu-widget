@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Marquee Example</title>
+    <style>
+        /* Your existing CSS styles */
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // (function ($) {
+        //     $.fn.initMarquee = function (options) {
+        //         // Default settings
+        //         var settings = $.extend({
+        //             width: '50%',
+        //             height: '50px',
+        //             border: '1px solid #e59191',
+        //             padding: '10px',
+        //             backgroundColor: '#f0f0f0',
+        //             textAlign: 'center',
+        //             textColor: '#000000' // Default text color
+        //         }, options);
+        //
+        //         return this.each(function () {
+        //             // Create the marquee element
+        //             var marquee = $('<marquee behavior="scroll" direction="left">lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatibus.</marquee>');
+        //
+        //             // Apply styles to the marquee
+        //             marquee.css({
+        //                 width: settings.width,
+        //                 height: settings.height,
+        //                 border: settings.border,
+        //                 padding: settings.padding,
+        //                 backgroundColor: settings.backgroundColor,
+        //                 textAlign: settings.textAlign,
+        //                 color: settings.textColor // Set text color
+        //             });
+        //
+        //             // Append the marquee to the specified div
+        //             $(this).append(marquee);
+        //         });
+        //     };
+        // })(jQuery);
+
+
+        (function ($) {
+            $.fn.initMarquee = function (options) {
+                // Default settings
+                const defaults = {
+                    width: '50%',
+                    height: '50px',
+                    border: '1px solid #e59191',
+                    padding: '10px',
+                    backgroundColor: '#f0f0f0',
+                    textAlign: 'center',
+                    textColor: '#000000' // Default text color
+                };
+
+                const settings = { ...defaults, ...options };
+
+                return this.each(function () {
+                    // Create the marquee element
+                    const marqueeText = 'lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatibus.';
+                    const marquee = $(`<marquee behavior="scroll" direction="left">${marqueeText}</marquee>`);
+
+                    // Apply styles to the marquee
+                    marquee.css({
+                        width: settings.width,
+                        height: settings.height,
+                        border: settings.border,
+                        padding: settings.padding,
+                        backgroundColor: settings.backgroundColor,
+                        textAlign: settings.textAlign,
+                        color: settings.textColor // Set text color
+                    });
+
+                    // Append the marquee to the specified div
+                    $(this).append(marquee);
+                });
+            };
+        })(jQuery);
+
+        // Initialize the marquee with custom settings
+        $(document).ready(function () {
+            $('#editor').initMarquee({
+                textColor: '#ff0000' // Custom text color
+                // Add more settings as needed
+            });
+        });
+    </script>
+</head>
+<body>
+<!-- Your existing HTML content -->
+<div id="editor"></div>
+</body>
+</html>

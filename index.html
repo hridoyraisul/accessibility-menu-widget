@@ -157,88 +157,91 @@
 </div>
 
 <!-- Accessibility Button Start -->
-<button class="accessibility-menu-btn" id="settings-toggle">
+<button class="accessibility-menu-btn" id="settings-toggle" onclick="visibleWidget()">
     🤖
 </button>
 <!-- Accessibility Button End -->
 
+<div id="widgetInit">
 
-<!-- Widget Start for bootstrap 5 -->
-<div class="accessibility-menu">
-    <button class="crossBtn" onclick="handleAccessibilityOption('close')">❌</button>
-    <div id="settings-list">
-        <ul style="list-style: none;">
-            <li>
-                <div class="widget-toolbar" role="toolbar" aria-label="">
-                    <div class="widget-group me-2" role="group" aria-label="">
-                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('font-increase')">
-                            <b>A<sup>+</sup></b>
-                        </button>
-                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('font-decrease')">
-                            <b>A<sup>-</sup></b>
-                        </button>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="widget-gap-2">
-                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('highlight-links')" id="highlight-links">
-                        <b>🔦</b>  Highlight Links
-                    </button>
-                </div>
-            </li>
-            <li>
-                <div class="widget-gap-2">
-                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('highlight-heading')" id="highlight-heading">
-                        <b>💡</b>  Highlight Heading
-                    </button>
-                </div>
-            </li>
-            <li>
-                <div class="widget-gap-2">
-                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('reading-guide')" id="reading-guide">
-                        <b>📖</b>  Reading Guide
-                    </button>
-                </div>
-            </li>
-            <li>
-                <div class="widget-gap-2">
-                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('big-cursor')" id="big-cursor">
-                        <b>👉</b>  Big Cursor
-                    </button>
-                </div>
-            </li>
-            <li>
-                <div class="widget-gap-2">
-                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('invert-color')" id="invert-color">
-                        <b>💫</b>  Invert Color
-                    </button>
-                </div>
-            </li>
-            <li>
-                <div class="widget-gap-2">
-                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('black-white')" id="black-white">
-                        <b>✒️️</b>  Black & White
-                    </button>
-                </div>
-            </li>
-            <li>
-                <div class="widget-gap-2">
-                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('screen-reader')" id="screen-reader">
-                        <b>🔉</b>  Read Screen
-                    </button>
-                </div>
-            </li>
-            <li>
-                <div class="widget-gap-2">
-                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('reset')" id="reset">
-                        <b>🚫</b>  Reset
-                    </button>
-                </div>
-            </li>
-        </ul>
-    </div>
 </div>
+
+<!-- Widget Start -->
+<!--<div class="accessibility-menu">-->
+<!--    <button class="crossBtn" onclick="handleAccessibilityOption('close')">❌</button>-->
+<!--    <div id="settings-list">-->
+<!--        <ul style="list-style: none;">-->
+<!--            <li>-->
+<!--                <div class="widget-toolbar" role="toolbar" aria-label="">-->
+<!--                    <div class="widget-group me-2" role="group" aria-label="">-->
+<!--                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('font-increase')">-->
+<!--                            <b>A<sup>+</sup></b>-->
+<!--                        </button>-->
+<!--                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('font-decrease')">-->
+<!--                            <b>A<sup>-</sup></b>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="widget-gap-2">-->
+<!--                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('highlight-links')" id="highlight-links">-->
+<!--                        <b>🔦</b>  Highlight Links-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="widget-gap-2">-->
+<!--                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('highlight-heading')" id="highlight-heading">-->
+<!--                        <b>💡</b>  Highlight Heading-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="widget-gap-2">-->
+<!--                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('reading-guide')" id="reading-guide">-->
+<!--                        <b>📖</b>  Reading Guide-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="widget-gap-2">-->
+<!--                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('big-cursor')" id="big-cursor">-->
+<!--                        <b>👉</b>  Big Cursor-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="widget-gap-2">-->
+<!--                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('invert-color')" id="invert-color">-->
+<!--                        <b>💫</b>  Invert Color-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="widget-gap-2">-->
+<!--                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('black-white')" id="black-white">-->
+<!--                        <b>✒️️</b>  Black & White-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="widget-gap-2">-->
+<!--                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('screen-reader')" id="screen-reader">-->
+<!--                        <b>🔉</b>  Read Screen-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <div class="widget-gap-2">-->
+<!--                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption('reset')" id="reset">-->
+<!--                        <b>🚫</b>  Reset-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</div>-->
 <!-- Widget Start -->
 
 

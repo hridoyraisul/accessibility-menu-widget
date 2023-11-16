@@ -1,15 +1,10 @@
-const settingsToggle = document.getElementById('settings-toggle');
-const accessibilityMenu = document.querySelector('.accessibility-menu');
-settingsToggle.addEventListener('click', () => {
-    accessibilityMenu.style.right = '10px';
-    accessibilityMenu.style.transition = 'right 0.5s';
-    accessibilityMenu.style.visibility = 'visible';
-});
-
 const content = document.querySelector('.content');
 let inverted, linksHighlighted, highlightedHeading, blackWhite, readingGuide, isReading, bigCursor;
 
 $(document).ready(()=>{
+
+    $('#widgetInit').widgetBox();
+
     if (sessionStorage.getItem('inverted') === 'true') {
         inverted = true;
         invertColor();
@@ -53,6 +48,13 @@ $(document).ready(()=>{
         bigCursor = false;
     }
 });
+
+function visibleWidget(){
+    const accessibilityMenu = document.querySelector('.accessibility-menu');
+    accessibilityMenu.style.right = '10px';
+    accessibilityMenu.style.transition = 'right 0.5s';
+    accessibilityMenu.style.visibility = 'visible';
+}
 
 function handleAccessibilityOption(option) {
     switch (option) {
@@ -200,24 +202,28 @@ function highlightHeading(){
 }
 
 function fontSizeManipulate(option){
-    let currentFontSize = content.style.fontSize;
-    switch (option) {
-        case 'increase':
-            if (currentFontSize < '1.4em' || currentFontSize === ''){
-                content.style.fontSize = currentFontSize ? parseFloat(currentFontSize) + 0.1 + 'em' : '1.1em';
-            }
-            break;
-        case 'decrease':
-            if (currentFontSize > '0.7em' || currentFontSize === ''){
-                content.style.fontSize = currentFontSize ? parseFloat(currentFontSize) - 0.1 + 'em' : '0.9em';
-                console.log(content.style.fontSize)
-            }
-            break;
-        default:
-            content.style.fontSize = '1em';
-            break;
-    }
-
+    let allText = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a, span, td, th, label, input, textarea, select');
+    allText.forEach(text => {
+        let currentFontSize = text.style.fontSize;
+        if (currentFontSize && currentFontSize.includes('px')){
+            currentFontSize = parseFloat(currentFontSize) / 16 + 'em';
+        }
+        switch (option) {
+            case 'increase':
+                if (currentFontSize < '1.4em' || currentFontSize === '1em'){
+                    text.style.fontSize = currentFontSize ? parseFloat(currentFontSize) + 0.1 + 'em' : '1.1em';
+                }
+                break;
+            case 'decrease':
+                if (currentFontSize > '0.7em' || currentFontSize === ''){
+                    text.style.fontSize = currentFontSize ? parseFloat(currentFontSize) - 0.1 + 'em' : '0.9em';
+                }
+                break;
+            default:
+                text.style.fontSize = '1em';
+                break;
+        }
+    });
 }
 
 function resetAccessibilitySettings(){
@@ -264,9 +270,9 @@ let voices = [];
 if ('speechSynthesis' in window) {
     window.speechSynthesis.onvoiceschanged = function() {
         voices = window.speechSynthesis.getVoices();
-        voices.forEach(voice => {
-            // console.log(voice.name, voice.lang);
-        });
+    //     voices.forEach(voice => {
+    //         console.log(voice.name, voice.lang);
+    //     });
     };
 } else {
     console.log('Your browser does not support the screen reader feature. Please use a different browser.');
@@ -291,7 +297,6 @@ function readText(text){
 }
 
 document.body.addEventListener('mouseover', (event) => {
-
     let textElementList = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TEXTAREA'];
     let highlightedElements = document.querySelectorAll('.highlighted');
     highlightedElements.forEach(element => {
@@ -316,97 +321,92 @@ document.body.addEventListener('mouseover', (event) => {
     }
 });
 
-// function inject_html_to_dom() {
-//     let html = '<div class="accessibility-menu">\n' +
-//         '\n' +
-//         '    <button class="btn btn-sm crossBtn" onclick="handleAccessibilityOption(\'close\')">❌</button>\n' +
-//         '\n' +
-//         '    <div id="settings-list">\n' +
-//         '        <ul style="list-style: none;">\n' +
-//         '            <li>\n' +
-//         '                <div class="btn-group btn-block">\n' +
-//         '                    <button class="btn text-center btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'font-increase\')">\n' +
-//         '                        <b>⬆️ A<sup>+</sup></b>\n' +
-//         '                    </button>\n' +
-//         '                    <button class="btn text-center btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'font-decrease\')">\n' +
-//         '                        <b>⬇️ A<sup>-</sup></b>\n' +
-//         '                    </button>\n' +
-//         '                </div>\n' +
-//         '            </li>\n' +
-//         '            <li>\n' +
-//         '                <div class="btn-group btn-block">\n' +
-//         '                    <button class="btn btn-sm btn-info iconBtn">🔦</button>\n' +
-//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'highlight-links\')" id="highlight-links">\n' +
-//         '                        Highlight Links\n' +
-//         '                    </button>\n' +
-//         '                </div>\n' +
-//         '            </li>\n' +
-//         '            <li>\n' +
-//         '                <div class="btn-group btn-block">\n' +
-//         '                    <button class="btn btn-sm btn-info iconBtn">💡</button>\n' +
-//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'highlight-heading\')" id="highlight-heading">\n' +
-//         '                        Highlight Heading\n' +
-//         '                    </button>\n' +
-//         '                </div>\n' +
-//         '            </li>\n' +
-//         '\n' +
-//         '            <li>\n' +
-//         '                <div class="btn-group btn-block">\n' +
-//         '                    <button class="btn btn-sm btn-info iconBtn">📖</button>\n' +
-//         '                    <button class="btn btn-sm accessibility-enable-button btn-block" onclick="handleAccessibilityOption(\'reading-guide\')" id="reading-guide">\n' +
-//         '                        Reading Guide\n' +
-//         '                    </button>\n' +
-//         '                </div>\n' +
-//         '            </li>\n' +
-//         '\n' +
-//         '            <li>\n' +
-//         '                <div class="btn-group btn-block">\n' +
-//         '                    <button class="btn btn-sm btn-info iconBtn">👉</button>\n' +
-//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'big-cursor\')" id="big-cursor">\n' +
-//         '                        Big Cursor\n' +
-//         '                    </button>\n' +
-//         '                </div>\n' +
-//         '            </li>\n' +
-//         '\n' +
-//         '            <li>\n' +
-//         '                <div class="btn-group btn-block">\n' +
-//         '                    <button class="btn btn-sm btn-info iconBtn"> 💫</button>\n' +
-//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'invert-color\')" id="invert-color">\n' +
-//         '                        Invert Color\n' +
-//         '                    </button>\n' +
-//         '                </div>\n' +
-//         '            </li>\n' +
-//         '            <li>\n' +
-//         '                <div class="btn-group btn-block">\n' +
-//         '                    <button class="btn btn-sm btn-info iconBtn">✒️</button>\n' +
-//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'black-white\')" id="black-white">\n' +
-//         '                        Black & White\n' +
-//         '                    </button>\n' +
-//         '                </div>\n' +
-//         '            </li>\n' +
-//         '\n' +
-//         '            <li>\n' +
-//         '                <div class="btn-group btn-block">\n' +
-//         '                    <button class="btn btn-sm btn-info iconBtn">🔊</button>\n' +
-//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'screen-reader\')" id="screen-reader">\n' +
-//         '                        Read Screen\n' +
-//         '                    </button>\n' +
-//         '                </div>\n' +
-//         '            </li>\n' +
-//         '            <li>\n' +
-//         '                <div class="btn-group btn-block">\n' +
-//         '                    <button class="btn btn-sm btn-info iconBtn"> 🚫</button>\n' +
-//         '                    <button class="btn btn-sm accessibility-enable-button" onclick="handleAccessibilityOption(\'reset\')" id="reset">\n' +
-//         '                        Reset\n' +
-//         '                    </button>\n' +
-//         '                </div>\n' +
-//         '            </li>\n' +
-//         '        </ul>\n' +
-//         '    </div>\n' +
-//         '</div>';
-//     let dom = document.getElementById('heart-widget');
-//     dom.innerHTML = html;
-//     if (dom.hasAttribute('data-widgetButton') && dom.getAttribute('data-widgetButton') === 'true') {
-//         dom.innerHTML += '<button class="btn btn-outline-dark m-4 accessibility-menu-btn" id="settings-toggle">🤖</button>';
-//     }
-//}
+
+const defaultWidget = '<div class="accessibility-menu">\n' +
+    '    <button class="crossBtn" onclick="handleAccessibilityOption(\'close\')">❌</button>\n' +
+    '    <div id="settings-list">\n' +
+    '        <ul style="list-style: none;">\n' +
+    '            <li>\n' +
+    '                <div class="widget-toolbar" role="toolbar" aria-label="">\n' +
+    '                    <div class="widget-group me-2" role="group" aria-label="">\n' +
+    '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-increase\')">\n' +
+    '                            <b>A<sup>+</sup></b>\n' +
+    '                        </button>\n' +
+    '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-decrease\')">\n' +
+    '                            <b>A<sup>-</sup></b>\n' +
+    '                        </button>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </li>\n' +
+    '            <li>\n' +
+    '                <div class="widget-gap-2">\n' +
+    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'highlight-links\')" id="highlight-links">\n' +
+    '                        <b>🔦</b>  Highlight Links\n' +
+    '                    </button>\n' +
+    '                </div>\n' +
+    '            </li>\n' +
+    '            <li>\n' +
+    '                <div class="widget-gap-2">\n' +
+    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'highlight-heading\')" id="highlight-heading">\n' +
+    '                        <b>💡</b>  Highlight Heading\n' +
+    '                    </button>\n' +
+    '                </div>\n' +
+    '            </li>\n' +
+    '            <li>\n' +
+    '                <div class="widget-gap-2">\n' +
+    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'reading-guide\')" id="reading-guide">\n' +
+    '                        <b>📖</b>  Reading Guide\n' +
+    '                    </button>\n' +
+    '                </div>\n' +
+    '            </li>\n' +
+    '            <li>\n' +
+    '                <div class="widget-gap-2">\n' +
+    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'big-cursor\')" id="big-cursor">\n' +
+    '                        <b>👉</b>  Big Cursor\n' +
+    '                    </button>\n' +
+    '                </div>\n' +
+    '            </li>\n' +
+    '            <li>\n' +
+    '                <div class="widget-gap-2">\n' +
+    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'invert-color\')" id="invert-color">\n' +
+    '                        <b>💫</b>  Invert Color\n' +
+    '                    </button>\n' +
+    '                </div>\n' +
+    '            </li>\n' +
+    '            <li>\n' +
+    '                <div class="widget-gap-2">\n' +
+    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'black-white\')" id="black-white">\n' +
+    '                        <b>✒️️</b>  Black & White\n' +
+    '                    </button>\n' +
+    '                </div>\n' +
+    '            </li>\n' +
+    '            <li>\n' +
+    '                <div class="widget-gap-2">\n' +
+    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'screen-reader\')" id="screen-reader">\n' +
+    '                        <b>🔉</b>  Read Screen\n' +
+    '                    </button>\n' +
+    '                </div>\n' +
+    '            </li>\n' +
+    '            <li>\n' +
+    '                <div class="widget-gap-2">\n' +
+    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'reset\')" id="reset">\n' +
+    '                        <b>🚫</b>  Reset\n' +
+    '                    </button>\n' +
+    '                </div>\n' +
+    '            </li>\n' +
+    '        </ul>\n' +
+    '    </div>\n' +
+    '</div>';
+
+(function ($) {
+    $.fn.widgetBox = function (options) {
+        const defaults = {
+            features: ['font-increase', 'font-decrease', 'big-cursor', 'screen-reader', 'invert-color', 'highlight-links', 'highlight-heading', 'reading-guide', 'black-white', 'reset', 'close' ],
+            position: 'right',
+            closeButton: 'left'
+        };
+        const settings = { ...defaults, ...options };
+        $(this).append(defaultWidget);
+    };
+})(jQuery);
+
