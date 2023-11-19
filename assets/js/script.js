@@ -3,7 +3,15 @@ let inverted, linksHighlighted, highlightedHeading, blackWhite, readingGuide, is
 
 $(document).ready(()=>{
 
-    $('#widgetInit').widgetBox();
+    $('#widgetInit').widgetBox(
+        {
+        features: ['screen-reader', 'invert-color'],
+        position: 'left',
+        closeButton: 'right',
+        showFontSizeButtons: true,
+        showResetButton: true,
+    }
+    );
 
     if (sessionStorage.getItem('inverted') === 'true') {
         inverted = true;
@@ -50,10 +58,17 @@ $(document).ready(()=>{
 });
 
 function visibleWidget(){
-    const accessibilityMenu = document.querySelector('.accessibility-menu');
-    accessibilityMenu.style.right = '10px';
-    accessibilityMenu.style.transition = 'right 0.5s';
-    accessibilityMenu.style.visibility = 'visible';
+    if(document.querySelector('.accessibility-menu-left') === null){
+        const accessibilityMenuRight = document.querySelector('.accessibility-menu-right');
+        accessibilityMenuRight.style.right = '10px';
+        accessibilityMenuRight.style.transition = 'right 0.5s';
+        accessibilityMenuRight.style.visibility = 'visible';
+    } else {
+        const accessibilityMenuLeft = document.querySelector('.accessibility-menu-left');
+        accessibilityMenuLeft.style.left = '10px';
+        accessibilityMenuLeft.style.transition = 'left 0.5s';
+        accessibilityMenuLeft.style.visibility = 'visible';
+    }
 }
 
 function handleAccessibilityOption(option) {
@@ -257,12 +272,25 @@ function resetAccessibilitySettings(){
 }
 
 function closeAccessibilityMenu() {
-    const accessibilityMenu = document.querySelector('.accessibility-menu');
-    accessibilityMenu.style.right = '-350px';
-    accessibilityMenu.style.transition = 'right 0.5s';
-    setTimeout(() => {
-        accessibilityMenu.style.visibility = 'hidden';
-    }, 300);
+
+    if(document.querySelector('.accessibility-menu-left') === null){
+        const accessibilityMenuRight = document.querySelector('.accessibility-menu-right');
+        accessibilityMenuRight.style.right = '-350px';
+        accessibilityMenuRight.style.transition = 'right 0.5s';
+        setTimeout(() => {
+            accessibilityMenuRight.style.visibility = 'hidden';
+        }, 300);
+    } else {
+        const accessibilityMenuLeft = document.querySelector('.accessibility-menu-left');
+        accessibilityMenuLeft.style.left = '-350px';
+        accessibilityMenuLeft.style.transition = 'left 0.5s';
+        setTimeout(() => {
+            accessibilityMenuLeft.style.visibility = 'hidden';
+        }, 300);
+    }
+
+
+
 }
 
 
@@ -270,9 +298,9 @@ let voices = [];
 if ('speechSynthesis' in window) {
     window.speechSynthesis.onvoiceschanged = function() {
         voices = window.speechSynthesis.getVoices();
-    //     voices.forEach(voice => {
-    //         console.log(voice.name, voice.lang);
-    //     });
+        // voices.forEach(voice => {
+        //     console.log(voice.name, voice.lang);
+        // });
     };
 } else {
     console.log('Your browser does not support the screen reader feature. Please use a different browser.');
@@ -398,67 +426,98 @@ const defaultWidget = '<div class="accessibility-menu">\n' +
     '    </div>\n' +
     '</div>';
 
-function widgetItem(item) {
-    switch (item) {
-        case 'font-increase-decrease':
-            return '<li>\n' +
-                '                <div class="widget-toolbar" role="toolbar" aria-label="">\n' +
-                '                    <div class="widget-group me-2" role="group" aria-label="">\n' +
-                '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-increase\')">\n' +
-                '                            <b>A<sup>+</sup></b>\n' +
-                '                        </button>\n' +
-                '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-decrease\')">\n' +
-                '                            <b>A<sup>-</sup></b>\n' +
-                '                        </button>\n' +
-                '                    </div>\n' +
-                '                </div>\n' +
-                '            </li>\n';
-        case 'big-cursor':
-            return;
-        case 'screen-reader':
-            return;
-        case 'invert-color':
-            return;
-        case 'highlight-links':
-            return '<li>\n' +
-                '                <div class="widget-gap-2">\n' +
-                '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'highlight-links\')" id="highlight-links">\n' +
-                '                        <b>🔦</b>  Highlight Links\n' +
-                '                    </button>\n' +
-                '                </div>\n' +
-                '            </li>\n';
-        case 'highlight-heading':
-            return '<li>\n' +
-                '                <div class="widget-gap-2">\n' +
-                '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'highlight-heading\')" id="highlight-heading">\n' +
-                '                        <b>💡</b>  Highlight Heading\n' +
-                '                    </button>\n' +
-                '                </div>\n' +
-                '            </li>\n';
-        case 'reading-guide':
-            return ;
-        case 'black-white':
-            return;
-        case 'reset':
-            return;
-        case 'close':
-            return;
+const widgetItems = {
+    'big-cursor': {
+        name: 'Big Cursor',
+        icon: '👉',
+        action: 'bigCursorSettings'
+    },
+    'screen-reader': {
+        name: 'Screen Reader',
+        icon: '🔉',
+        action: 'screenReaderSettings'
+    },
+    'invert-color': {
+        name: 'Invert Color',
+        icon: '💫',
+        action: 'invertColor'
+    },
+    'highlight-links': {
+        name: 'Highlight Links',
+        icon: '🔦',
+        action: 'highlightLink'
+    },
+    'highlight-heading': {
+        name: 'Highlight Heading',
+        icon: '💡',
+        action: 'highlightHeading'
+    },
+    'reading-guide': {
+        name: 'Reading Guide',
+        icon: '📖',
+        action: 'readingGuideSettings'
+    },
+    'black-white': {
+        name: 'Black & White',
+        icon: '✒️️',
+        action: 'blackAndWhite'
     }
 }
 
 function fetchWidget(settings) {
+    let crossbuttonClass = settings.closeButton === 'left' ? 'crossBtnLeft' : 'crossBtnRight';
+    let widgetMenuClass = settings.position === 'left' ? 'accessibility-menu-left' : 'accessibility-menu-right';
+    let widgetHTML = '<div class="'+widgetMenuClass+'">\n' +
+        '    <button class="'+crossbuttonClass+'" onclick="handleAccessibilityOption(\'close\')">❌</button>\n' +
+        '    <div id="settings-list">\n' +
+        '        <ul style="list-style: none;">\n';
+    if (settings.showFontSizeButtons){
+        widgetHTML += ' <li>\n' +
+            '                <div class="widget-toolbar" role="toolbar" aria-label="">\n' +
+            '                    <div class="widget-group me-2" role="group" aria-label="">\n' +
+            '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-increase\')">\n' +
+            '                            <b>A<sup>+</sup></b>\n' +
+            '                        </button>\n' +
+            '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-decrease\')">\n' +
+            '                            <b>A<sup>-</sup></b>\n' +
+            '                        </button>\n' +
+            '                    </div>\n' +
+            '                </div>\n' +
+            '            </li>\n';
+    }
     settings.features.forEach(feature => {
-
-    })
-    return defaultWidget;
+        let widget = widgetItems[feature];
+        widgetHTML +=  '<li>\n' +
+            '                <div class="widget-gap-2">\n' +
+            '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\''+feature+'\')" id="'+feature+'">\n' +
+            '                        <b>'+widget['icon']+'</b>  '+widget['name']+'\n' +
+            '                    </button>\n' +
+            '                </div>\n' +
+            '            </li>\n'
+    });
+    if (settings.showResetButton){
+        widgetHTML += ' <li>\n' +
+            '                <div class="widget-gap-2">\n' +
+            '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'reset\')" id="reset">\n' +
+            '                        <b>🚫</b>  Reset\n' +
+            '                    </button>\n' +
+            '                </div>\n' +
+            '            </li>\n' +
+            '        </ul>\n' +
+            '    </div>\n' +
+            '</div>';
+    }
+    return widgetHTML;
 }
 
 (function ($) {
     $.fn.widgetBox = function (options) {
         const defaults = {
-            features: ['font-increase-decrease', 'big-cursor', 'screen-reader', 'invert-color', 'highlight-links', 'highlight-heading', 'reading-guide', 'black-white', 'reset', 'close' ],
+            features: ['big-cursor', 'screen-reader', 'invert-color', 'highlight-links', 'highlight-heading', 'reading-guide', 'black-white'],
             position: 'right',
-            closeButton: 'left'
+            closeButton: 'left',
+            showFontSizeButtons: true,
+            showResetButton: true,
         };
         const settings = { ...defaults, ...options };
         $(this).append(fetchWidget(settings));

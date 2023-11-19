@@ -36,7 +36,8 @@
 }
 
 /*Widget Menu Box Start*/
-.accessibility-menu {
+/* Right Menu */
+.accessibility-menu-right {
     position: fixed;
     top: 50%;
     right: -350px;
@@ -49,16 +50,43 @@
     background-color: rgba(0, 0, 0, 0.8);
     transition: all 0.3s ease-in-out;
 }
-.accessibility-menu:hover {
+.accessibility-menu-right:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
-.accessibility-menu ul {
+.accessibility-menu-right ul {
     padding: 0;
 }
-.accessibility-menu li {
+.accessibility-menu-right li {
     margin-top: 10px;
 }
-.accessibility-menu li button {
+.accessibility-menu-right li button {
+    width: 100%;
+    text-align: left;
+}
+/* Left Menu */
+.accessibility-menu-left{
+    position: fixed;
+    top: 50%;
+    left: -350px;
+    transform: translateY(-50%);
+    padding: 10px;
+    border: 5px solid dimgray;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease-in-out;
+}
+.accessibility-menu-left:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.accessibility-menu-left ul {
+    padding: 0;
+}
+.accessibility-menu-left li {
+    margin-top: 10px;
+}
+.accessibility-menu-left li button {
     width: 100%;
     text-align: left;
 }
@@ -66,7 +94,7 @@
 
 
 /*Widget Menu Close Button Start*/
-.crossBtn {
+.crossBtnLeft {
     position: absolute;
     top: 0;
     left: 0;
@@ -79,10 +107,29 @@
     background-color: #ffffff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
-.crossBtn:hover {
+.crossBtnLeft:hover {
     background-color: #a8c4c4;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
+.crossBtnRight{
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    border-radius: 50%;
+    padding: 5px 5px;
+    font-size: 10px;
+    border: solid 3px dimgray;
+    outline: none;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.crossBtnRight:hover {
+    background-color: #a8c4c4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 /*Widget Menu Close Button End*/
 
 /*Rounded Floating Button Start*/
