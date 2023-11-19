@@ -24,7 +24,7 @@
 }
 
 .big-cursor {
-    cursor: url('assets/img/big-cursor.svg'), auto !important;
+    cursor: url('https://cdn.jsdelivr.net/gh/hridoyraisul/accessibility-menu-widget@custom/assets/img/big-cursor.svg'), auto !important;
 }
 
 .iconBtn{

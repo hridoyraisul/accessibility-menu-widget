@@ -6,7 +6,7 @@ $(document).ready(()=>{
 
     $('#widgetInit').widgetBox(
         {
-        features: ['screen-reader', 'invert-color'],
+        features: ['screen-reader', 'invert-color','big-cursor'],
         // position: 'left',
         // closeButton: 'right',
         // showFontSizeButtons: true,
