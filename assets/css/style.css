@@ -135,7 +135,7 @@
 /*Rounded Floating Button Start*/
 .accessibility-menu-btn {
     position: fixed;
-    top: 80%;
+    top: 50%;
     right: 1px;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.8);
@@ -144,7 +144,7 @@
     border: 5px solid dimgray;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 999;
+    /*z-index: 999;*/
 }
 .accessibility-menu-btn:hover {
     border: 5px solid dimgray;
@@ -154,7 +154,7 @@
 
 .accessibility-menu-btn-left{
     position: fixed;
-    top: 80%;
+    top: 50%;
     left: 1px;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.8);
@@ -163,7 +163,7 @@
     border: 5px solid dimgray;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 999;
+    /*z-index: 999;*/
 }
 .accessibility-menu-btn-left:hover {
     border: 5px solid dimgray;
