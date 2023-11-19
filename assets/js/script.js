@@ -446,7 +446,7 @@ function fetchWidget(settings) {
 (function ($) {
     $.fn.widgetBox = function (options) {
         const defaults = {
-            features: ['big-cursor', 'screen-reader', 'invert-color', 'highlight-links', 'highlight-heading', 'reading-guide', 'black-white'],
+            features: ['highlight-links','highlight-heading','reading-guide','invert-color','black-white','screen-reader','big-cursor'],
             position: 'right',
             closeButton: 'left',
             showFontSizeButtons: true,
