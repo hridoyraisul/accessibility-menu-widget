@@ -151,6 +151,27 @@
     background-color: rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
+
+.accessibility-menu-btn-left{
+    position: fixed;
+    top: 50%;
+    left: 1px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease-in-out;
+    padding: 10px;
+    border: 5px solid dimgray;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+.accessibility-menu-btn-left:hover {
+    border: 5px solid dimgray;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+
 /*Rounded Floating Button End*/
 
 

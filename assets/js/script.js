@@ -3,13 +3,16 @@ let inverted, linksHighlighted, highlightedHeading, blackWhite, readingGuide, is
 
 $(document).ready(()=>{
 
+
     $('#widgetInit').widgetBox(
         {
         features: ['screen-reader', 'invert-color'],
-        position: 'left',
-        closeButton: 'right',
-        showFontSizeButtons: true,
-        showResetButton: true,
+        // position: 'left',
+        // closeButton: 'right',
+        // showFontSizeButtons: true,
+        // showResetButton: true,
+        // showWidgetVisibleButton: true,
+        // widgetVisibleButtonPosition: 'right',
     }
     );
 
@@ -78,6 +81,9 @@ function handleAccessibilityOption(option) {
             break;
         case 'font-decrease':
             fontSizeManipulate('decrease');
+            break;
+        case 'font-default':
+            fontSizeManipulate('default');
             break;
         case 'big-cursor':
             bigCursorSettings();
@@ -350,82 +356,6 @@ document.body.addEventListener('mouseover', (event) => {
 });
 
 
-const defaultWidget = '<div class="accessibility-menu">\n' +
-    '    <button class="crossBtn" onclick="handleAccessibilityOption(\'close\')">❌</button>\n' +
-    '    <div id="settings-list">\n' +
-    '        <ul style="list-style: none;">\n' +
-    '            <li>\n' +
-    '                <div class="widget-toolbar" role="toolbar" aria-label="">\n' +
-    '                    <div class="widget-group me-2" role="group" aria-label="">\n' +
-    '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-increase\')">\n' +
-    '                            <b>A<sup>+</sup></b>\n' +
-    '                        </button>\n' +
-    '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-decrease\')">\n' +
-    '                            <b>A<sup>-</sup></b>\n' +
-    '                        </button>\n' +
-    '                    </div>\n' +
-    '                </div>\n' +
-    '            </li>\n' +
-    '            <li>\n' +
-    '                <div class="widget-gap-2">\n' +
-    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'highlight-links\')" id="highlight-links">\n' +
-    '                        <b>🔦</b>  Highlight Links\n' +
-    '                    </button>\n' +
-    '                </div>\n' +
-    '            </li>\n' +
-    '            <li>\n' +
-    '                <div class="widget-gap-2">\n' +
-    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'highlight-heading\')" id="highlight-heading">\n' +
-    '                        <b>💡</b>  Highlight Heading\n' +
-    '                    </button>\n' +
-    '                </div>\n' +
-    '            </li>\n' +
-    '            <li>\n' +
-    '                <div class="widget-gap-2">\n' +
-    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'reading-guide\')" id="reading-guide">\n' +
-    '                        <b>📖</b>  Reading Guide\n' +
-    '                    </button>\n' +
-    '                </div>\n' +
-    '            </li>\n' +
-    '            <li>\n' +
-    '                <div class="widget-gap-2">\n' +
-    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'big-cursor\')" id="big-cursor">\n' +
-    '                        <b>👉</b>  Big Cursor\n' +
-    '                    </button>\n' +
-    '                </div>\n' +
-    '            </li>\n' +
-    '            <li>\n' +
-    '                <div class="widget-gap-2">\n' +
-    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'invert-color\')" id="invert-color">\n' +
-    '                        <b>💫</b>  Invert Color\n' +
-    '                    </button>\n' +
-    '                </div>\n' +
-    '            </li>\n' +
-    '            <li>\n' +
-    '                <div class="widget-gap-2">\n' +
-    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'black-white\')" id="black-white">\n' +
-    '                        <b>✒️️</b>  Black & White\n' +
-    '                    </button>\n' +
-    '                </div>\n' +
-    '            </li>\n' +
-    '            <li>\n' +
-    '                <div class="widget-gap-2">\n' +
-    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'screen-reader\')" id="screen-reader">\n' +
-    '                        <b>🔉</b>  Read Screen\n' +
-    '                    </button>\n' +
-    '                </div>\n' +
-    '            </li>\n' +
-    '            <li>\n' +
-    '                <div class="widget-gap-2">\n' +
-    '                    <button class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'reset\')" id="reset">\n' +
-    '                        <b>🚫</b>  Reset\n' +
-    '                    </button>\n' +
-    '                </div>\n' +
-    '            </li>\n' +
-    '        </ul>\n' +
-    '    </div>\n' +
-    '</div>';
-
 const widgetItems = {
     'big-cursor': {
         name: 'Big Cursor',
@@ -481,6 +411,9 @@ function fetchWidget(settings) {
             '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-decrease\')">\n' +
             '                            <b>A<sup>-</sup></b>\n' +
             '                        </button>\n' +
+            '                        <button type="button" class="widget-btn widget-btn-outline-light" onclick="handleAccessibilityOption(\'font-default\')">\n' +
+            '                            <b>A<sup>0</sup></b>\n' +
+            '                        </button>\n' +
             '                    </div>\n' +
             '                </div>\n' +
             '            </li>\n';
@@ -518,8 +451,15 @@ function fetchWidget(settings) {
             closeButton: 'left',
             showFontSizeButtons: true,
             showResetButton: true,
+            showWidgetVisibleButton: true,
+            widgetVisibleButtonPosition: 'right',
         };
         const settings = { ...defaults, ...options };
+        if (settings.showWidgetVisibleButton) {
+            (settings.widgetVisibleButtonPosition === 'left')
+                ? $(this).append('<button class="accessibility-menu-btn-left" onclick="visibleWidget()">🤖</button>')
+                : $(this).append('<button class="accessibility-menu-btn" onclick="visibleWidget()">🤖</button>');
+        }
         $(this).append(fetchWidget(settings));
     };
 })(jQuery);
