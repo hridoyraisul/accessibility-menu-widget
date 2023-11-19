@@ -2,20 +2,6 @@ const content = document.querySelector('.content');
 let inverted, linksHighlighted, highlightedHeading, blackWhite, readingGuide, isReading, bigCursor;
 
 $(document).ready(()=>{
-
-
-    $('#widgetInit').widgetBox(
-        {
-        features: ['screen-reader', 'invert-color','big-cursor'],
-        // position: 'left',
-        // closeButton: 'right',
-        // showFontSizeButtons: true,
-        // showResetButton: true,
-        // showWidgetVisibleButton: true,
-        // widgetVisibleButtonPosition: 'right',
-    }
-    );
-
     if (sessionStorage.getItem('inverted') === 'true') {
         inverted = true;
         invertColor();
