@@ -135,7 +135,7 @@
 /*Rounded Floating Button Start*/
 .accessibility-menu-btn {
     position: fixed;
-    top: 50%;
+    top: 80%;
     right: 1px;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.8);
@@ -154,7 +154,7 @@
 
 .accessibility-menu-btn-left{
     position: fixed;
-    top: 50%;
+    top: 80%;
     left: 1px;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.8);
