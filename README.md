@@ -21,49 +21,60 @@ The widget includes the following features:
 
 To integrate the Accessibility Menu Widget into your web page:
 
-1. Include the necessary script and CSS files.
-2. Create a trigger (button, link, etc.) to open the menu.
+1. Include the necessary script and CSS CDN.
+2. Create a trigger (button, link, etc.) to open the menu. (Optional)
 3. Implement the necessary JavaScript functions to handle each feature's functionality.
 
 ## Installation
 
 You can install the widget by including the provided JavaScript and CSS files in your project.
 
-## How to Use
 
 #### CSS Initialization
 ```html
-<link rel="stylesheet" href="assets/css/style.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hridoyraisul/accessibility-menu-widget@main/assets/css/widget.min.css">
 ```
 
 #### JavaScript Initialization
-```javascript
-<script src="assets/js/script.js"></script>
+```html
+Initialize jQuery
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+Initialize the widget
+<script src="https://cdn.jsdelivr.net/gh/hridoyraisul/accessibility-menu-widget@main/assets/js/widget.min.js"></script>
 ```
 
 #### HTML Initialization
 
-Include the following HTML code in your web page to create the accessibility menu button.
-
+Include the following HTML code in your web page body root to create the accessibility menu.
 ```html
-<button class="accessibility-menu-btn" id="settings-toggle">
-     🤖
-</button>
+<body>
+    <div id="widgetInit"></div>
+</body>
 ```
-For the menu to work properly, the button must have the class `accessibility-menu-btn` and the id `settings-toggle`.
 Now, include `.content` class to the content of your web page like below:
 
 ```html
-<div class="content">
-    <div>
-        <h1>This is a heading</h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum.
-        </p>
+<body>
+    <div id="widgetInit"></div>
+    <div class="content">
+        <div>
+            <h1>This is a heading</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, voluptatum. Quisquam, voluptatum. Quisquam, voluptatum.
+            </p>
+        </div>
+        ...
+        ...
     </div>
-</div>
+</body>
 ```
+
+## How to Use
+
+
+
 This is how your widget should look like:
 
 ![Accessibility Menu Button](screenshot/img.png)
