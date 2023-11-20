@@ -46,18 +46,11 @@ Initialize the widget
 
 #### HTML Initialization
 
-Include the following HTML code in your web page body root to create the accessibility menu.
-```html
-<body>
-    <div id="widgetInit"></div>
-</body>
-```
-Now, include `.content` class to the content of your web page like below:
+Include `.widget-applicable-content` class to the content of your web page like below:
 
 ```html
 <body>
-    <div id="widgetInit"></div>
-    <div class="content">
+    <div class="widget-applicable-content">
         <div>
             <h1>This is a heading</h1>
             <p>
