@@ -2,7 +2,6 @@ const content = document.querySelector('.widget-applicable-content');
 let inverted, linksHighlighted, highlightedHeading, blackWhite, readingGuide, isReading, bigCursor;
 
 $(document).ready(()=>{
-    $('body').append('<div id="widgetInit"></div>');
     if (sessionStorage.getItem('inverted') === 'true') {
         inverted = true;
         invertColor();
