@@ -430,11 +430,11 @@ function fetchWidget(settings) {
 }
 
 (function ($) {
-    $.fn.widgetBox = function (options) {
+    $.fn.accessibilityMenuWidget = function (options) {
         const defaults = {
             features: ['highlight-links','highlight-heading','reading-guide','invert-color','black-white','screen-reader','big-cursor'],
-            position: 'right',
-            closeButton: 'left',
+            widgetPosition: 'right',
+            closeButtonPosition: 'left',
             showFontSizeButtons: true,
             showResetButton: true,
             showWidgetVisibleButton: true,

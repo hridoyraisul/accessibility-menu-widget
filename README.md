@@ -45,11 +45,19 @@ Initialize the widget
 ```
 
 #### HTML Initialization
+Include HTML code `<div id="widgetInit"></div>` in your web page body root like below:
+```html
+<body>
+    <div id="widgetInit"></div>
+</body>
+```
 
-Include `.widget-applicable-content` class to the content of your web page like below:
+Include `.widget-applicable-content` class to the content of your web page like below, so that the widget can apply the changes to the content of your web page inside this `.widget-applicable-content` class. It will basically wrap the content of your web page where the widget will be applicable.
 
 ```html
 <body>
+    <div id="widgetInit"></div>
+    
     <div class="widget-applicable-content">
         <div>
             <h1>This is a heading</h1>
@@ -65,34 +73,97 @@ Include `.widget-applicable-content` class to the content of your web page like 
 ```
 
 ## How to Use
+Let's see how to use the accessibility menu widget.
 
-
-
-This is how your widget should look like:
-
-![Accessibility Menu Button](screenshot/img.png)
-![Accessibility Menu Widget](screenshot/img_1.png)
-
-### Note:
-Have some dependencies with bootstrap and jquery. So, make sure you have included them in your project.
-* Bootstrap CSS CDN:
-```html
-# For Bootstrap 4
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-# For Bootstrap 5
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+### Initialize the widget
+Initialize the widget by calling the `accessibilityMenuWidget()` function on the `#widgetInit` element. This will create the widget on your web page.
+```javascript
+$(document).ready(function () {
+    $('#widgetInit').accessibilityMenuWidget();
+});
 ```
-* Bootstrap & jQuery CDN:
+### Customize widget button
+You can customize the widget button by passing the `showWidgetVisibleButton` and `widgetVisibleButtonPosition` parameters to the `accessibilityMenuWidget()` function.
+```javascript
+$(document).ready(function () {
+    $('#widgetInit').accessibilityMenuWidget({
+        showWidgetVisibleButton: true,
+        widgetVisibleButtonPosition: 'right',
+    });
+});
+```
+Here, `showWidgetVisibleButton` parameter is used to show/hide the widget button. By default, it is set to `true`. If you want to hide the widget button, you can set it to `false`.
+
+Also `widgetVisibleButtonPosition` parameter is used to set the position of the widget button. By default, it is set to `right`. If you want to set the position of the widget button to left, you can set it to `left`.
+Like below:
+```javascript
+$(document).ready(function () {
+    $('#widgetInit').accessibilityMenuWidget({
+        showWidgetVisibleButton: true,
+        widgetVisibleButtonPosition: 'left',
+    });
+});
+```
+If you don't want to show the widget button, and want to access the widget by clicking your own custom button or link, then you can simply apply like below:
+```javascript
+$(document).ready(function () {
+    $('#widgetInit').accessibilityMenuWidget({
+        showWidgetVisibleButton: false,
+    });
+});
+```
+And then you can access the widget by clicking your own custom button or link like below:
 ```html
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<button id="your_custom_button" onclick="visibleWidget()">Accessibility Menu</button>
+```
+Here, `visibleWidget()` is the function that will open the widget. So, you need to define the `visibleWidget()` function like above example.
 
-# For Bootstrap 4
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+### Customize widget features
+You can customize the widget features by passing the `features` parameter to the `accessibilityMenuWidget()` function. Which will show the features you want to show in the widget.
+You can pass the features like below:
+```javascript
+$(document).ready(function () {
+    $('#widgetInit').accessibilityMenuWidget({
+        features: ['highlight-links','highlight-heading','reading-guide','invert-color','black-white','screen-reader','big-cursor'],
+    });
+});
+```
+In the above example,
+- `highlight-links` will show the highlight links feature in the widget.
+- `highlight-heading` will show the highlight heading feature in the widget.
+- `reading-guide` will show the reading guide feature in the widget.
+- `invert-color` will show the invert color feature in the widget.
+- `black-white` will show the black & white feature in the widget.
+- `screen-reader` will show the screen reader feature in the widget.
+- `big-cursor` will show the big cursor feature in the widget.
 
-# For Bootstrap 5
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+You can show/hide the font increase/decrease feature by passing the `showFontSizeButtons` parameters to the `accessibilityMenuWidget()` function. Here `showFontSizeButtons` accepts boolean value. By default, it is set to `false`. If you don't want to show the font increase/decrease feature, you can set it to `false`. By default, it is set to `true`. So, if you want to show the font increase/decrease feature, you don't need to pass the `showFontSizeButtons` parameter to the `accessibilityMenuWidget()` function.
+```javascript
+$(document).ready(function () {
+    $('#widgetInit').accessibilityMenuWidget({
+        showFontSizeButtons: false,
+    });
+});
+```
+Also show/hide the reset feature by passing the `showResetButton` parameters to the `accessibilityMenuWidget()` function.
+```javascript
+$(document).ready(function () {
+    $('#widgetInit').accessibilityMenuWidget({
+        showResetButton: true,
+    });
+});
+```
+
+### Customize widget position
+You can customize the widget position by passing the `widgetPosition` & `closeButtonPosition` parameters to the `accessibilityMenuWidget()` function. Here `widgetPosition` & `closeButtonPosition` accepts string value. 
+By default, `widgetPosition` is set to `right` & `closeButtonPosition` is set to `left`. If you want to set the position of the widget to left, you can set like below:
+```javascript
+$(document).ready(function () {
+    $('#widgetInit').accessibilityMenuWidget({
+        widgetPosition: 'left',
+        closeButtonPosition: 'right',
+    });
+});
 ```
 
 
@@ -100,5 +171,5 @@ Have some dependencies with bootstrap and jquery. So, make sure you have include
 
 Contributing
 ------------
-Raisul Islam Hridoy -
-Software Engineer, Riseup Labs
+#### Raisul Islam Hridoy,
+#### Software Engineer, Riseup Labs
