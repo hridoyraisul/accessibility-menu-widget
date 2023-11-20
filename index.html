@@ -21,14 +21,16 @@
     </style>
 
 <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
-<!--    <link type="text/css" rel="stylesheet" href="assets/css/style.css">-->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hridoyraisul/accessibility-menu-widget@live/assets/css/widget.min.css">
+<!--    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hridoyraisul/accessibility-menu-widget@live/assets/css/widget.min.css">-->
 
 </head>
-<body class="antialiased">
+<body class="antialiased ">
 
 <div id="widgetInit"></div>
+
+<div id="highlighted-line"></div>
 
 <div class="widget-applicable-content">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -53,7 +55,7 @@
 
 
 
-        <div class="row">
+        <div class="row" >
 
             <div class="card col-3 mt-3 mb-2 my-5">
                 <div class="card-header">
@@ -252,24 +254,14 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
 
-<!--<script src="assets/js/script.js"></script>-->
-<script src="https://cdn.jsdelivr.net/gh/hridoyraisul/accessibility-menu-widget@live/assets/js/widget.min.js"></script>
+<script src="assets/js/script.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/gh/hridoyraisul/accessibility-menu-widget@live/assets/js/widget.min.js"></script>-->
 
 <script>
 
 
 
-    $('#widgetInit').widgetBox(
-        // {
-            // features: ['screen-reader', 'invert-color','big-cursor'],
-            // position: 'left',
-            // closeButton: 'right',
-            // showFontSizeButtons: true,
-            // showResetButton: false,
-            // showWidgetVisibleButton: true,
-            // widgetVisibleButtonPosition: 'right',
-        // }
-    );
+    $('#widgetInit').accessibilityMenuWidget();
 </script>
 
 </body>

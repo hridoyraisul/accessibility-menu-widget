@@ -23,6 +23,16 @@
     color: #0c1527; !important;
 }
 
+
+#highlighted-line{
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background-color: yellow;
+    opacity: 0.5;
+    z-index: 999;
+}
+
 .big-cursor {
     cursor: url('https://cdn.jsdelivr.net/gh/hridoyraisul/accessibility-menu-widget@live/assets/img/big-cursor.svg'), auto !important;
 }

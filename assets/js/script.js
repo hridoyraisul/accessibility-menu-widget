@@ -315,6 +315,10 @@ function readText(text){
         alert('Your browser does not support the screen reader feature. Please use a different browser.');
     }
 }
+window.addEventListener('mouseover', (event) => {
+    let mouseY = event.pageY;
+    document.getElementById('highlighted-line').style.top = (mouseY) + 'px';
+});
 
 document.body.addEventListener('mouseover', (event) => {
     let textElementList = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TEXTAREA'];
@@ -331,7 +335,6 @@ document.body.addEventListener('mouseover', (event) => {
     if (isReading === true) {
         speechSynthesis.cancel();
         if (textElementList.includes(target.tagName)) {
-            target.classList.add('highlighted');
             target.classList.add('highlighted');
             const text = target.textContent.trim();
             if (text) {
@@ -381,8 +384,8 @@ const widgetItems = {
 }
 
 function fetchWidget(settings) {
-    let crossbuttonClass = settings.closeButton === 'left' ? 'crossBtnLeft' : 'crossBtnRight';
-    let widgetMenuClass = settings.position === 'left' ? 'accessibility-menu-left' : 'accessibility-menu-right';
+    let crossbuttonClass = settings.closeButtonPosition === 'left' ? 'crossBtnLeft' : 'crossBtnRight';
+    let widgetMenuClass = settings.widgetPosition === 'left' ? 'accessibility-menu-left' : 'accessibility-menu-right';
     let widgetHTML = '<div class="'+widgetMenuClass+'">\n' +
         '    <button class="'+crossbuttonClass+'" onclick="handleAccessibilityOption(\'close\')">❌</button>\n' +
         '    <div id="settings-list">\n' +
