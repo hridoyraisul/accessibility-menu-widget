@@ -103,7 +103,6 @@ function handleAccessibilityOption(option) {
     }
 }
 
-
 function bigCursorSettings(){
     const cursorButton = document.getElementById('big-cursor');
     if (!bigCursor){
@@ -138,10 +137,15 @@ function readingGuideSettings(){
     if (!readingGuide){
         readingGuide = true;
         readGuideButton.style.color = 'yellow';
+        if (document.getElementById('highlighted-line') === null) {
+            let highlightedLine = document.createElement('div');
+            highlightedLine.id = 'highlighted-line';
+            document.body.append(highlightedLine);
+        }
     } else {
         readingGuide = false;
         readGuideButton.style.color = 'lightcyan';
-
+        if (document.getElementById('highlighted-line') !== null) document.getElementById('highlighted-line').remove();
     }
     sessionStorage.setItem('readingGuide', readingGuide)
 }
@@ -261,6 +265,7 @@ function resetAccessibilitySettings(){
     widgetButtons.forEach(button => {
         button.style.color = '#fff';
     });
+    if (document.getElementById('highlighted-line') !== null) document.getElementById('highlighted-line').remove();
 }
 
 function closeAccessibilityMenu() {
@@ -284,7 +289,6 @@ function closeAccessibilityMenu() {
 
 
 }
-
 
 let voices = [];
 if ('speechSynthesis' in window) {
@@ -315,24 +319,22 @@ function readText(text){
         alert('Your browser does not support the screen reader feature. Please use a different browser.');
     }
 }
+
 window.addEventListener('mouseover', (event) => {
-    let mouseY = event.pageY;
-    document.getElementById('highlighted-line').style.top = (mouseY) + 'px';
+    if (readingGuide === true){
+        let mouseY = event.pageY;
+        document.getElementById('highlighted-line').style.top = (mouseY) + 'px';
+    }
 });
 
 document.body.addEventListener('mouseover', (event) => {
-    let textElementList = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TEXTAREA'];
-    let highlightedElements = document.querySelectorAll('.highlighted');
-    highlightedElements.forEach(element => {
-        element.classList.remove('highlighted');
-    });
-    const target = event.target;
-    if (readingGuide === true){
-        if (textElementList.includes(target.tagName)) {
-            target.classList.add('highlighted');
-        }
-    }
     if (isReading === true) {
+        let textElementList = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TEXTAREA'];
+        let highlightedElements = document.querySelectorAll('.highlighted');
+        highlightedElements.forEach(element => {
+            element.classList.remove('highlighted');
+        });
+        const target = event.target;
         speechSynthesis.cancel();
         if (textElementList.includes(target.tagName)) {
             target.classList.add('highlighted');
@@ -343,7 +345,6 @@ document.body.addEventListener('mouseover', (event) => {
         }
     }
 });
-
 
 const widgetItems = {
     'big-cursor': {
