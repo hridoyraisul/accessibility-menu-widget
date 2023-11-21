@@ -2,6 +2,10 @@
 
 The Accessibility Menu Widget is designed to enhance the user experience by providing a range of accessibility features for web pages.
 
+<p align="center">
+    <img src="./Widget-Poster.png" alt="Widget Poster" width="70%">
+</p>
+
 ## Features
 
 The widget includes the following features:
@@ -165,7 +169,6 @@ $(document).ready(function () {
     });
 });
 ```
-
 
 ----------------------------------------------------
 
