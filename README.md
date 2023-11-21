@@ -25,7 +25,7 @@ The widget includes the following features:
 
 To integrate the Accessibility Menu Widget into your web page:
 
-1. Include the necessary script and CSS CDN.
+1. Include the necessary script and CSS.
 2. Create a trigger (button, link, etc.) to open the menu. (Optional)
 3. Implement the necessary JavaScript functions to handle each feature's functionality.
 
@@ -172,7 +172,9 @@ $(document).ready(function () {
 
 ----------------------------------------------------
 
-Contributing
-------------
-#### Raisul Islam Hridoy,
-#### Software Engineer, Riseup Labs
+### Contributing
+
+<b>Raisul Islam Hridoy</b> <br>
+Software Engineer, Riseup Labs <br>
+Social Links: <br>
+[LinkedIn](https://www.linkedin.com/in/raisulhridoy/) | [Facebook](https://www.facebook.com/exheartz) | [Twitter](https://twitter.com/raisulhridoy) | [GitHub](http://github.com/hridoyraisul) | [Instagram](https://www.instagram.com/raisulhridoy/) | [WhatsApp](https://wa.me/8801686851584)
